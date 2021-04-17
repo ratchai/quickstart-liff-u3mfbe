@@ -32,15 +32,16 @@ var userlocation;
 
 async function getUserProfile() {
   //pictureUrl.src = profile.pictureUrl;
-  greetingText.innerHTML = "สวัสดี " + profile.displayName;
+  greetingText.innerHTML = "สวัสดีคุณ" + profile.displayName;
 }
 
 function refreshTime() {
-  var options = { dateStyle: "medium", timeStyle: "medium" };
+  var options = { dateStyle: "long", timeStyle: "medium" };
   var dateString = new Date().toLocaleString("th-TH", options);
   var formattedTimeString = dateString.substring(dateString.length - 8);
   var formattedDateString = dateString.substring(0, dateString.length - 8);
-  formattedDateString = formattedDateString.replace("256", "6");
+  // formattedDateString = formattedDateString.replace("256", "6");
+  formattedTimeString = formattedTimeString.replace(/:/g, " : ");
   timeDisplay.innerHTML = formattedTimeString;
   dateDisplay.innerHTML = formattedDateString;
 }
@@ -144,9 +145,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });
   profile = await liff.getProfile();
-
   getUserProfile();
-
   initMap(profile.pictureUrl);
 }
 main();

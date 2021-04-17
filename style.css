@@ -1,0 +1,117 @@
+body {
+  margin: 20px;
+  background-color: rgb(
+    247,
+    255,
+    216
+  ); /* For browsers that do not support gradients */
+  background-image: radial-gradient(white, rgb(247, 255, 216));
+}
+
+button {
+  display: none;
+  width: 100%;
+  padding: 8px 0;
+  margin: 8px auto;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+
+p {
+  border-bottom: 1px dashed #ddd;
+}
+#greeting {
+  text-align: center;
+  font-size: 32px;
+  padding: 4px;
+}
+#pictureUrl {
+  margin: 0 auto;
+  width: 32%;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  box-align: center;
+  -moz-border-radius: 256px;
+  -webkit-border-radius: 256px;
+  border-radius: 256px;
+  padding: 4px;
+}
+
+#accessToken,
+#utouId {
+  display: block;
+  overflow: auto;
+}
+
+#map {
+  height: 80%;
+}
+#datetimeblock {
+  background-color: white;
+  height: 90px;
+  width: 200px;
+  margin: 0 auto;
+  border-radius: 20px 20px 20px 20px;
+  border: 2px solid #5d6e45;
+  padding: 5px;
+}
+#time {
+  padding-top: 5px;
+  font-size: 40px;
+  text-align: center;
+}
+#date {
+  font-size: 28px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+html,
+body {
+  height: 75%;
+  margin: 0;
+  padding: 0;
+}
+#rcorners1 {
+  border-radius: 25px;
+  background: #73ad21;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+}
+.customMarker {
+  position: absolute;
+  cursor: pointer;
+  background: #424242;
+  width: 100px;
+  height: 100px;
+  /* -width/2 */
+  margin-left: -50px;
+  /* -height + arrow */
+  margin-top: -110px;
+  border-radius: 50%;
+  padding: 0px;
+}
+.customMarker:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 40px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: #424242 transparent;
+  display: block;
+  width: 0;
+}
+.customMarker img {
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+  border-radius: 50%;
+}

@@ -44,6 +44,7 @@ function refreshTime() {
   formattedTimeString = formattedTimeString.replace(/:/g, " : ");
   timeDisplay.innerHTML = formattedTimeString;
   dateDisplay.innerHTML = formattedDateString;
+  dateDisplay.innerHTML = formattedDateString;
 }
 
 setInterval(refreshTime, 1000);

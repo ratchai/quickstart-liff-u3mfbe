@@ -142,10 +142,31 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   );
   infoWindow.open(map);
 }
+function on_btnCheckin_click() {
+  liff.sendMessages([
+    {
+      type: "text",
+      text:
+        "คุณได้เข้างานเมื่อวันที่  " +
+        formattedDateString +
+        " เวลา" +
+        formattedTimeString +
+        " เรียบร้อยแล้ว"
+    }
+  ]);
+  liff.sendMessages([
+    {
+      type: "sticker",
+      packageId: 446,
+      stickerId: 1989
+    }
+  ]);
+  liff.closeWindow();
+}
 
 async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });
-  profile = await liff.getProfile();
+
   getUserProfile();
   initMap(profile.pictureUrl);
 }

@@ -161,7 +161,7 @@ function on_btnCheckin_click() {
       stickerId: 1989
     }
   ]);
-  liff.closeWindow();
+  //liff.closeWindow();
 }
 
 async function main() {

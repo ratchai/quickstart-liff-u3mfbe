@@ -1,6 +1,6 @@
 // Import stylesheets
 import "style.css";
-
+console.log("called");
 // Body element
 const body = document.getElementById("body");
 

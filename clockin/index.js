@@ -1,5 +1,5 @@
 // Import stylesheets
-import "./style.css";
+import "style.css";
 
 // Body element
 const body = document.getElementById("body");

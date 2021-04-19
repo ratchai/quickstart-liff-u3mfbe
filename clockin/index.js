@@ -1,6 +1,6 @@
 // Import stylesheets
 //import "style.css";
-var ms = require("./style.css");
+//var ms = require("./style.css");
 // Body element
 const body = document.getElementById("body");
 

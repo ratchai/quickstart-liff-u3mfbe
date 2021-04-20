@@ -36,6 +36,7 @@ async function getUserProfile() {
 }
 
 function refreshTime() {
+  //test//
   var options = { dateStyle: "long", timeStyle: "medium" };
   var dateString = new Date().toLocaleString("th-TH", options);
   var formattedTimeString = dateString.substring(dateString.length - 8);
@@ -166,11 +167,11 @@ function on_btnCheckin_click() {
 
 async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });
- // const querystring = decodeURIComponent(window.location.search);
-//  greetingText.innerHTML = querystring;
-greetingText.innerHTML = "ssdfasdfasdf";
+  // const querystring = decodeURIComponent(window.location.search);
+  //  greetingText.innerHTML = querystring;
+  greetingText.innerHTML = "ssdfasdfasdf";
 
- // getUserProfile();
- // initMap(profile.pictureUrl);
+  // getUserProfile();
+  // initMap(profile.pictureUrl);
 }
 main();

@@ -173,4 +173,4 @@ greetingText.innerHTML = "ssdfasdfasdf";
  // getUserProfile();
  // initMap(profile.pictureUrl);
 }
-//main();
+main();

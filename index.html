@@ -6,13 +6,45 @@
   <meta name="viewport"
     content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover" />
   <title>กำลังลงทะเบียนเข้างาน</title>
+  <script src="vconsole.min.js"></script>
+  <script>
+    var vconsle = new VConsle();
+  </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB81t9Aiz3uHhEdpm949j2vS7tYtv3BAJA"></script>
   <script src="https://static.line-scdn.net/liff/edge/versions/2.8.1/sdk.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
 </head>
 
 <body id="body">
-  
+  <section id="greeting">สวัสดีคุณ</section>
+  <section id="profile"></section>
+  <section id="feature"></section>
+  <section id="button"></section>
+  <section id="currenttime">
+    <div id="datetimeblock">
+      <div id="time"></div>
+      <div id="date"></div>
+    </div>
+  </section>
+  <br />
+
+  <div id="map"></div>
+
+  <div class="center">
+    <button type="button" class="btnCheckin" onclick="on_btnCheckin_click()">
+        <img
+          width="100"
+          height="35"      
+             src="./checkinBtn.png"
+        />
+      </button>
+  </div>
+  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+  <!-- <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB81t9Aiz3uHhEdpm949j2vS7tYtv3BAJA&callback=initMap&libraries=&v=weekly"
+    async>
+  </script>-->
 </body>
 
 </html>

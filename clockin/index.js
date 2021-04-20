@@ -47,7 +47,7 @@ function refreshTime() {
   dateDisplay.innerHTML = formattedDateString;
 }
 
-setInterval(refreshTime, 1000);
+//setInterval(refreshTime, 1000);
 
 var map, infoWindow, marker;
 
@@ -173,4 +173,4 @@ greetingText.innerHTML = "ssdfasdfasdf";
  // getUserProfile();
  // initMap(profile.pictureUrl);
 }
-main();
+//main();

@@ -166,10 +166,11 @@ function on_btnCheckin_click() {
 
 async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });
-  const querystring = decodeURIComponent(window.location.search);
-  greetingText.innerHTML = querystring;
+ // const querystring = decodeURIComponent(window.location.search);
+//  greetingText.innerHTML = querystring;
+greetingText.innerHTML = "ssdfasdfasdf";
 
-  getUserProfile();
-  initMap(profile.pictureUrl);
+ // getUserProfile();
+ // initMap(profile.pictureUrl);
 }
 main();

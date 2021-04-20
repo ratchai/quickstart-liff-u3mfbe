@@ -168,7 +168,7 @@ function on_btnCheckin_click() {
 async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });
   profile = liff.getProfile();
-  getUserProfile();
+  greetingText.innerHTML = "สวัสดีคุณ" + profile.displayName;
   initMap(profile.pictureUrl);
 }
 main();

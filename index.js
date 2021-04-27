@@ -52,6 +52,8 @@ setInterval(refreshTime, 1000);
 
 var map, infoWindow, marker;
 
+
+//Google map
 function CustomMarker(latlng, map, imageSrc) {
   this.latlng_ = latlng;
   this.imageSrc = imageSrc;
@@ -103,6 +105,8 @@ CustomMarker.prototype.remove = function() {
 CustomMarker.prototype.getPosition = function() {
   return this.latlng_;
 };
+
+
 
 function initMap(profileimageURL) {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -164,6 +168,28 @@ function on_btnCheckin_click() {
   ]);
   liff.closeWindow();
 }
+
+
+//firebase
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC4CozT8itBrDosBrMR5pBAIkeWPTp5eUo",
+  authDomain: "checkin-310e7.firebaseapp.com",
+  databaseURL: "https://checkin-310e7.firebaseio.com",
+  projectId: "checkin-310e7",
+  storageBucket: "checkin-310e7.appspot.com",
+  messagingSenderId: "1031310741781",
+  appId: "1:1031310741781:web:f78e888f082e2be768d91c",
+  measurementId: "G-T1NEF88G3H"
+};
+firebase.initializeApp(firebaseConfig);
+var starCountRef = firebase.database().ref('CheckInTable/0/2020-09-03');
+starCountRef.on('value', (snapshot) => {
+  const data = snapshot.val();
+  console.log(data);
+});
+
+
 
 async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });

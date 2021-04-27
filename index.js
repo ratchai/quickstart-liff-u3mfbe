@@ -169,7 +169,7 @@ async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });
   if(!liff.isLoggedIn())
   await liff.login();
-  profile = liff.getProfile();
+  await profile = liff.getProfile();
   greetingText.innerHTML = "สวัสดีคุณ" + profile.displayName;
   initMap(profile.pictureUrl);
 }

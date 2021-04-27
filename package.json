@@ -1,6 +1,7 @@
 {
-  "name": "js-atafxq",
-  "version": "0.0.0",
-  "private": true,
-  "dependencies": {}
-}
+    "name": "js-atafxq",
+    "version": "0.0.0",
+    "private": true,
+    "type":"module",
+    "dependencies": {}
+  }

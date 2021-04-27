@@ -1,6 +1,6 @@
 // Import stylesheets
-import "./style.css";
-//var ms = require("./style.css");
+//import "./style.css";
+
 // Body element
 const body = document.getElementById("body");
 
@@ -162,11 +162,13 @@ function on_btnCheckin_click() {
       stickerId: 1989
     }
   ]);
-  //liff.closeWindow();
+  liff.closeWindow();
 }
 
 async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });
+  if(!liff.isLoggedIn())
+  await liff.login();
   profile = liff.getProfile();
   greetingText.innerHTML = "สวัสดีคุณ" + profile.displayName;
   initMap(profile.pictureUrl);

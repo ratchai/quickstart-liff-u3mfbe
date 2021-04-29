@@ -154,7 +154,7 @@ function on_btnCheckin_click() {
         "คุณได้เข้างานเมื่อวันที่  " +
         dateDisplay.innerHTML +
         " เวลา" +
-        formattedTimeString +
+        timeDisplay.innerHTML +
         " เรียบร้อยแล้ว"
     }
   ]);

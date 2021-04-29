@@ -198,8 +198,9 @@ function checkIn() {
       console.log(snapshot.val());
     } else {
       console.log("No data available");
-      firebase.database().ref('UserTable').push({
-        "userId":profile.userId
+      firebase.database().ref('UserTable').setValue( profile.userId);
+      firebase.database().ref('UserTable/'+profile.userId).set( {
+        picURL:"www.abc.com"        
       });
     }
   }).catch((error) => {
@@ -217,7 +218,13 @@ function checkIn() {
   });
   
 }
-
+function writeUserData(userId, name, email, imageUrl) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
 
 async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });

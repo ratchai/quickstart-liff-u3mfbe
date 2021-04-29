@@ -198,7 +198,7 @@ function checkIn() {
       console.log(snapshot.val());
     } else {
       console.log("No data available");
-      dbRef.child('UserTable').setValue( profile.userId);
+      dbRef.child('UserTable').set( profile.userId);
       dbRef.child('UserTable/'+profile.userId).set( {
         picURL:"www.abc.com"        
       });

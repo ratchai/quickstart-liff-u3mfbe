@@ -194,7 +194,7 @@ function checkIn() {
   var dateString = moment(now).format('YYYY-MM-DD');
   
   firebase.database().ref('CheckInTable/' + profile.userId+'/'+dateString).push({
-    "utcCreatedUnix": admin.database.ServerValue.TIMESTAMP, 
+    "utcCreatedUnix": firebase.database.ServerValue.TIMESTAMP, 
     "userid":profile.userId, 
     "displayname":profile.displayName, 
     "lat":userlocation.lat , 

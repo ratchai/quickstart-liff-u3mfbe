@@ -198,8 +198,8 @@ function checkIn() {
       console.log(snapshot.val());
     } else {
       console.log("No data available");
-      firebase.database().ref('UserTable').setValue( profile.userId);
-      firebase.database().ref('UserTable/'+profile.userId).set( {
+      dbRef.child('UserTable').setValue( profile.userId);
+      dbRef.child('UserTable/'+profile.userId).set( {
         picURL:"www.abc.com"        
       });
     }

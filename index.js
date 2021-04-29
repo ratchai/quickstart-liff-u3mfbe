@@ -29,7 +29,7 @@ const dateDisplay = document.getElementById("date");
 const greetingText = document.getElementById("greeting");
 var profile;
 var userlocation;
-
+var dateString;
 async function getUserProfile() {
   //pictureUrl.src = profile.pictureUrl;
   greetingText.innerHTML = "สวัสดีคุณ" + profile.displayName;
@@ -38,9 +38,9 @@ async function getUserProfile() {
 function refreshTime() {
   //test//
   var options = { dateStyle: "long", timeStyle: "medium" };
-  var dateString = new Date().toLocaleString("th-TH", options);
+  dateString = new Date().toLocaleString("th-TH", options);
   var formattedTimeString = dateString.substring(dateString.length - 8);
-  var dateString = dateString.substring(0, dateString.length - 8);
+  dateString = dateString.substring(0, dateString.length - 8);
   // formattedDateString = formattedDateString.replace("256", "6");
   formattedTimeString = formattedTimeString.replace(/:/g, " : ");
   timeDisplay.innerHTML = formattedTimeString;
@@ -193,9 +193,9 @@ function checkIn() {
   let now = new Date();
   var dateString = moment(now).format('YYYY-MM-DD');
   
-  firebase.database().ref('CheckInTable/' + userid+'/'+dateString).push({
+  firebase.database().ref('CheckInTable/' + profile.userId+'/'+dateString).push({
     "utcCreatedUnix": admin.database.ServerValue.TIMESTAMP, 
-    "userid":profile.userid, 
+    "userid":profile.userId, 
     "displayname":profile.displayName, 
     "lat":userlocation.lat , 
     "lng":userlocation.lng ,

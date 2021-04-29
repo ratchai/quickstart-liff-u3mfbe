@@ -203,7 +203,7 @@ function checkIn() {
     "Type":"in"
   });
   
-  firebase.database().ref('/.info/serverTimeOffset')
+ // firebase.database().ref('/.info/serverTimeOffset')
 }
 
 

@@ -193,13 +193,13 @@ const dbRef = firebase.database().ref();
 function checkIn() {
   let now = new Date();
   var dateString = moment(now).format('YYYY-MM-DD');
-  dbRef.child("UserTable").child(Profile.userId).get().then((snapshot) => {
+  dbRef.child("UserTable").child(profile.userId).get().then((snapshot) => {
     if (snapshot.exists()) {
       console.log(snapshot.val());
     } else {
       console.log("No data available");
       firebase.database().ref('UserTable').push({
-        "userId":Profile.userId
+        "userId":profile.userId
       });
     }
   }).catch((error) => {

@@ -147,26 +147,27 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 function on_btnCheckin_click() {
-  liff.sendMessages([
-    {
-      type: "text",
-      text:
-        "คุณได้เข้างานเมื่อวันที่  " +
-        dateDisplay.innerHTML +
-        " เวลา" +
-        timeDisplay.innerHTML +
-        " เรียบร้อยแล้ว"
-    }
-  ]);
-  liff.sendMessages([
-    {
-      type: "sticker",
-      packageId: 446,
-      stickerId: 1989
-    }
-  ]);
+  // liff.sendMessages([
+  //   {
+  //     type: "text",
+  //     text:
+  //       "คุณได้เข้างานเมื่อวันที่  " +
+  //       dateDisplay.innerHTML +
+  //       " เวลา" +
+  //       timeDisplay.innerHTML +
+  //       " เรียบร้อยแล้ว"
+  //   }
+  // ]);
+  // liff.sendMessages([
+  //   {
+  //     type: "sticker",
+  //     packageId: 446,
+  //     stickerId: 1989
+  //   }
+  // ]);
   checkIn();
-  liff.closeWindow();
+  console.log("Cehc in done");
+  //liff.closeWindow();
 }
 
 

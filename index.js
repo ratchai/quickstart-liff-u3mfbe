@@ -45,7 +45,6 @@ function refreshTime() {
   formattedTimeString = formattedTimeString.replace(/:/g, " : ");
   timeDisplay.innerHTML = formattedTimeString;
   dateDisplay.innerHTML = formattedDateString;
-  dateDisplay.innerHTML = formattedDateString;
 }
 
 setInterval(refreshTime, 1000);
@@ -166,6 +165,7 @@ function on_btnCheckin_click() {
       stickerId: 1989
     }
   ]);
+  checkIn();
   liff.closeWindow();
 }
 
@@ -188,6 +188,23 @@ starCountRef.on('value', (snapshot) => {
   const data = snapshot.val();
   console.log(data);
 });
+
+function checkIn() {
+  let now = new Date();
+  var dateString = moment(now).format('YYYY-MM-DD');
+  
+  firebase.database().ref('CheckInTable/' + userid+'/'+dateString).push({
+    "utcCreatedUnix": admin.database.ServerValue.TIMESTAMP, 
+    "userid":profile.userid, 
+    "displayname":profile.displayName, 
+    "lat":userlocation.lat , 
+    "lng":userlocation.lng ,
+    "locationtxt":"", 
+    "Type":"in"
+  });
+  
+  firebase.database().ref('/.info/serverTimeOffset')
+}
 
 
 

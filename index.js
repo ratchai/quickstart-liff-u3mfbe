@@ -189,26 +189,43 @@ firebase.initializeApp(firebaseConfig);
 //   const data = snapshot.val();
 //   console.log(data);
 // });
-
+const dbRef = firebase.database().ref();
 function checkIn() {
   let now = new Date();
   var dateString = moment(now).format('YYYY-MM-DD');
-  
-  firebase.database().ref('CheckInTable/' + profile.userId+'/'+dateString).push({
-    "utcCreatedUnix": firebase.database.ServerValue.TIMESTAMP, 
-    "userid":profile.userId, 
-    "displayname":profile.displayName, 
-    "lat":userlocation.lat , 
-    "lng":userlocation.lng ,
-    "locationtxt":"", 
-    "Type":"in"
+  dbRef.child("UserTable").child(Profile.userId).get().then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+    } else {
+      console.log("No data available");
+      firebase.database().ref('UserTable').push({
+        "userId":Profile.userId
+      });
+    }
+  }).catch((error) => {
+    console.error(error);
+  }).then(()=>{
+    firebase.database().ref('CheckInTable/' + profile.userId+'/'+dateString).push({
+      "utcCreatedUnix": firebase.database.ServerValue.TIMESTAMP, 
+      "userid":profile.userId, 
+      "displayname":profile.displayName, 
+      "lat":userlocation.lat , 
+      "lng":userlocation.lng ,
+      "locationtxt":"", 
+      "Type":"in"
+    });
   });
   
- // firebase.database().ref('/.info/serverTimeOffset')
 }
 
 
 
+ref.child("users").orderByChild("ID").equalTo("userId").once("value",snapshot => {
+  if (snapshot.exists()){
+    const userData = snapshot.val();
+    console.log("exists!", userData);
+  }
+});
 async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });
   if(!liff.isLoggedIn())

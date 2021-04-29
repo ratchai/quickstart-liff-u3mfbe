@@ -40,11 +40,11 @@ function refreshTime() {
   var options = { dateStyle: "long", timeStyle: "medium" };
   var dateString = new Date().toLocaleString("th-TH", options);
   var formattedTimeString = dateString.substring(dateString.length - 8);
-  var formattedDateString = dateString.substring(0, dateString.length - 8);
+  var dateString = dateString.substring(0, dateString.length - 8);
   // formattedDateString = formattedDateString.replace("256", "6");
   formattedTimeString = formattedTimeString.replace(/:/g, " : ");
   timeDisplay.innerHTML = formattedTimeString;
-  dateDisplay.innerHTML = formattedDateString;
+  dateDisplay.innerHTML =  dateString.substring(0, dateString.length - 8);;
 }
 
 setInterval(refreshTime, 1000);
@@ -152,7 +152,7 @@ function on_btnCheckin_click() {
       type: "text",
       text:
         "คุณได้เข้างานเมื่อวันที่  " +
-        formattedDateString +
+        dateDisplay.innerHTML +
         " เวลา" +
         formattedTimeString +
         " เรียบร้อยแล้ว"
@@ -183,11 +183,11 @@ const firebaseConfig = {
   measurementId: "G-T1NEF88G3H"
 };
 firebase.initializeApp(firebaseConfig);
-var starCountRef = firebase.database().ref('CheckInTable/0/2020-09-03');
-starCountRef.on('value', (snapshot) => {
-  const data = snapshot.val();
-  console.log(data);
-});
+// var starCountRef = firebase.database().ref('CheckInTable/0/2020-09-03');
+// starCountRef.on('value', (snapshot) => {
+//   const data = snapshot.val();
+//   console.log(data);
+// });
 
 function checkIn() {
   let now = new Date();

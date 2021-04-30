@@ -215,7 +215,10 @@ function callback_pushdatatoDB(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {   
     for (var i = 0; i < results.length; i++) {
     
-      if('rating' in results[i] == false) console.log(results[i].name +" has undefined rating")
+      if('rating' in results[i] == false) {
+        console.log(results[i].name +" has undefined rating");
+        continue;
+      }
       if(results[i].user_ratings_total> max_user_rating)
       {
         max_user_rating_location = results[0].name;
@@ -244,7 +247,7 @@ function callback_pushdatatoDB(results, status) {
     "Type":"in",
     "picURL": profile.pictureUrl
   });
-  //endCheckin(max_rating_location+","+max_rating_location);
+  endCheckin(max_rating_location+","+max_rating_location);
 }
 function endCheckin(locationtxt)
 {

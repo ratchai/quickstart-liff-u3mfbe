@@ -153,27 +153,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 function on_btnCheckin_click() {
-  // liff.sendMessages([
-  //   {
-  //     type: "text",
-  //     text:
-  //       "คุณได้เข้างานเมื่อวันที่  " +
-  //       dateDisplay.innerHTML +
-  //       " เวลา" +
-  //       timeDisplay.innerHTML +
-  //       " เรียบร้อยแล้ว"
-  //   }
-  // ]);
-  // liff.sendMessages([
-  //   {
-  //     type: "sticker",
-  //     packageId: 446,
-  //     stickerId: 1989
-  //   }
-  // ]);
+ 
   checkIn();
-  console.log("Cehc in done");
-  //liff.closeWindow();
+
 }
 
 
@@ -212,14 +194,7 @@ function checkIn() {
   }).catch((error) => {
     console.error(error);
   }).then(()=>{
-    //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=18.286724562998195,99.499419297315&rankby=distance&key=AIzaSyC4CozT8itBrDosBrMR5pBAIkeWPTp5eUo
-//get the first 3 place that has top rating 
-//vs the first 3 place that hs top user_rating 
-//if non get normal address
-// else '-'
-
-getLocationTxtFromLocation(userlocation.lat,userlocation.lng);
-
+    getLocationTxtFromLocation(userlocation.lat,userlocation.lng);
    
   });  
 }
@@ -236,22 +211,50 @@ function getLocationTxtFromLocation(lat,lng)
 }
 function callback_pushdatatoDB(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
+    let max_rating=0, max_user_rating=0;
+    let max_rating_location, max_user_rating_location;
     for (var i = 0; i < results.length; i++) {
-      console.log(results[i]);
+      if(results[i].max_user_rating> max_user_rating)
+      {
+        max_user_rating_location = result[0].name;
+      }
+      if(result[i].rating>max_rating)
+      {
+        max_rating_location = result[0].name;
+      }      
     }
+    
   }
+  
   firebase.database().ref('CheckInTable/' + profile.userId+'/'+dateString).push({
     "utcCreatedUnix": firebase.database.ServerValue.TIMESTAMP, 
     "userid":profile.userId, 
     "displayname":profile.displayName, 
     "lat":userlocation.lat , 
     "lng":userlocation.lng ,
-    "locationtxt":"", 
+    "locationtxt":max_rating_location+","+max_rating_location, 
     "Type":"in",
     "picURL": profile.pictureUrl
   });
+  endCheckin(max_rating_location+","+max_rating_location);
 }
-
+function endCheckin(locationtxt)
+{
+  liff.sendMessages([
+    {
+      type: "text",
+      text:
+        "คุณได้เข้างานเมื่อวันที่  " +  dateDisplay.innerHTML +" เวลา" +timeDisplay.innerHTML +" สถานที่ใกล้ๆ "+locationtxt
+    }
+  ]);
+  liff.sendMessages([
+    {
+      type: "sticker",
+      packageId: 446,
+      stickerId: 1989
+    }
+  ]);
+}
 
 async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });

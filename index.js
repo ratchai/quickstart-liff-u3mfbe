@@ -228,7 +228,8 @@ function getLocationTxtFromLocation(lat,lng)
   let curpos = new google.maps.LatLng(lat,lng);
   var request = {
     location: curpos,
-    rankby:"distance"
+    rankby:"distance",
+    radius:100
   };
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback_pushdatatoDB);

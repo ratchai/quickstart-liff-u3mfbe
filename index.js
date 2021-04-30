@@ -228,7 +228,7 @@ function callback_pushdatatoDB(results, status) {
         max_rating_location = results[0].name;
         console.log(results[i]);
         max_rating = results[i].rating;
-        max_rating_location = results[i].rating;
+        max_rating_location = results[i].name;
       }      
     }
     

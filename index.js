@@ -247,7 +247,7 @@ function callback_pushdatatoDB(results, status) {
     "Type":"in",
     "picURL": profile.pictureUrl
   });
-  endCheckin(max_rating_location+","+max_rating_location);
+  endCheckin(locationtxt);
 }
 function endCheckin(locationtxt)
 {

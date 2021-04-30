@@ -220,11 +220,15 @@ function callback_pushdatatoDB(results, status) {
       {
         max_user_rating_location = results[0].name;
         console.log(results[i]);
+        max_user_rating = results[i].user_ratings_total;
+        max_user_rating_location = result[i].name;
       }
       if(results[i].rating>max_rating)
       {
         max_rating_location = results[0].name;
         console.log(results[i]);
+        max_rating = results[i].rating;
+        max_rating_location = result[i].rating;
       }      
     }
     

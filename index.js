@@ -215,7 +215,7 @@ function callback_pushdatatoDB(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {   
     for (var i = 0; i < results.length; i++) {
     
-    
+      if(result[i].rating=="undefined") console.log(results[i].name +" has undefined rating")
       if(results[i].user_ratings_total> max_user_rating)
       {
         max_user_rating_location = results[0].name;

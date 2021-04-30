@@ -233,7 +233,7 @@ function callback_pushdatatoDB(results, status) {
     }
     
   }
-  let locationtxt = (max_rating==max_rating_location)?max_rating_location:max_user_rating_location+","+max_rating_location
+  let locationtxt = (max_rating_location==max_rating_location)?max_rating_location:max_user_rating_location+","+max_rating_location
   firebase.database().ref('CheckInTable/' + profile.userId+'/'+dateString).push({
     "utcCreatedUnix": firebase.database.ServerValue.TIMESTAMP, 
     "userid":profile.userId, 

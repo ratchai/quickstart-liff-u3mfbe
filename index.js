@@ -237,7 +237,7 @@ function callback_pushdatatoDB(results, status) {
     "Type":"in",
     "picURL": profile.pictureUrl
   });
-  endCheckin(max_rating_location+","+max_rating_location);
+  //endCheckin(max_rating_location+","+max_rating_location);
 }
 function endCheckin(locationtxt)
 {
@@ -245,7 +245,7 @@ function endCheckin(locationtxt)
     {
       type: "text",
       text:
-        "คุณได้เข้างานเมื่อวันที่  " +  dateDisplay.innerHTML +" เวลา" +timeDisplay.innerHTML +" สถานที่ใกล้ๆ "+locationtxt
+        "คุณได้เข้างานเมื่อวันที่  " +  dateDisplay.innerHTML +" เวลา " +timeDisplay.innerHTML +" สถานที่ใกล้ๆ "+locationtxt
     }
   ]);
   liff.sendMessages([

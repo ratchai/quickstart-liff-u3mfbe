@@ -216,11 +216,11 @@ function callback_pushdatatoDB(results, status) {
     for (var i = 0; i < results.length; i++) {
       if(results[i].max_user_rating> max_user_rating)
       {
-        max_user_rating_location = result[0].name;
+        max_user_rating_location = results[0].name;
       }
-      if(result[i].rating>max_rating)
+      if(results[i].rating>max_rating)
       {
-        max_rating_location = result[0].name;
+        max_rating_location = results[0].name;
       }      
     }
     

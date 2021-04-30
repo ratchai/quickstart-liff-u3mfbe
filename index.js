@@ -214,14 +214,17 @@ function callback_pushdatatoDB(results, status) {
   let max_rating_location, max_user_rating_location;
   if (status == google.maps.places.PlacesServiceStatus.OK) {   
     for (var i = 0; i < results.length; i++) {
-      console.log(results[i]);
-      if(results[i].max_user_rating> max_user_rating)
+    
+    
+      if(results[i].user_ratings_total> max_user_rating)
       {
         max_user_rating_location = results[0].name;
+        console.log(results[i]);
       }
       if(results[i].rating>max_rating)
       {
         max_rating_location = results[0].name;
+        console.log(results[i]);
       }      
     }
     

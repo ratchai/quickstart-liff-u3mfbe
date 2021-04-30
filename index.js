@@ -41,11 +41,17 @@ function refreshTime() {
   dateString = new Date().toLocaleString("th-TH", options);
   var formattedTimeString = dateString.substring(dateString.length - 8);
   dateString = dateString.substring(0, dateString.length - 8);
-  // formattedDateString = formattedDateString.replace("256", "6");
   formattedTimeString = formattedTimeString.replace(/:/g, " : ");
   timeDisplay.innerHTML = formattedTimeString;
   dateDisplay.innerHTML =  dateString.substring(0, dateString.length - 8);;
 }
+
+//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=18.286724562998195,99.499419297315&rankby=distance&key=AIzaSyC4CozT8itBrDosBrMR5pBAIkeWPTp5eUo
+//get the first 3 place that has top rating 
+//vs the first 3 place that hs top user_rating 
+//if non get normal address
+// else '-'
+
 
 setInterval(refreshTime, 1000);
 
@@ -206,25 +212,45 @@ function checkIn() {
   }).catch((error) => {
     console.error(error);
   }).then(()=>{
-    firebase.database().ref('CheckInTable/' + profile.userId+'/'+dateString).push({
-      "utcCreatedUnix": firebase.database.ServerValue.TIMESTAMP, 
-      "userid":profile.userId, 
-      "displayname":profile.displayName, 
-      "lat":userlocation.lat , 
-      "lng":userlocation.lng ,
-      "locationtxt":"", 
-      "Type":"in"
-    });
-  });
-  
+    //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=18.286724562998195,99.499419297315&rankby=distance&key=AIzaSyC4CozT8itBrDosBrMR5pBAIkeWPTp5eUo
+//get the first 3 place that has top rating 
+//vs the first 3 place that hs top user_rating 
+//if non get normal address
+// else '-'
+
+getLocationTxtFromLocation(userlocation.lat,userlocation.lng);
+
+   
+  });  
 }
-function writeUserData(userId, name, email, imageUrl) {
-  firebase.database().ref('users/' + userId).set({
-    username: name,
-    email: email,
-    profile_picture : imageUrl
+function getLocationTxtFromLocation(lat,lng)
+{
+  let curpos = new google.maps.LatLng(lat,lng);
+  var request = {
+    location: curpos,
+    rankby:"distance"
+  };
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback_pushdatatoDB);
+}
+function callback_pushdatatoDB(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      console.log(results[i]);
+    }
+  }
+  firebase.database().ref('CheckInTable/' + profile.userId+'/'+dateString).push({
+    "utcCreatedUnix": firebase.database.ServerValue.TIMESTAMP, 
+    "userid":profile.userId, 
+    "displayname":profile.displayName, 
+    "lat":userlocation.lat , 
+    "lng":userlocation.lng ,
+    "locationtxt":"", 
+    "Type":"in",
+    "picURL": profile.pictureUrl
   });
 }
+
 
 async function main() {
   await liff.init({ liffId: "1655863402-51ngLPwJ" });

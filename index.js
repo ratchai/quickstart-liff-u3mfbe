@@ -214,6 +214,7 @@ function callback_pushdatatoDB(results, status) {
   let max_rating_location, max_user_rating_location;
   if (status == google.maps.places.PlacesServiceStatus.OK) {   
     for (var i = 0; i < results.length; i++) {
+      console.log(results[i]);
       if(results[i].max_user_rating> max_user_rating)
       {
         max_user_rating_location = results[0].name;
@@ -225,7 +226,7 @@ function callback_pushdatatoDB(results, status) {
     }
     
   }
-  
+  let locationtxt = (max_rating==max_rating_location)?max_rating_location:max_user_rating_location+","+max_rating_location
   firebase.database().ref('CheckInTable/' + profile.userId+'/'+dateString).push({
     "utcCreatedUnix": firebase.database.ServerValue.TIMESTAMP, 
     "userid":profile.userId, 

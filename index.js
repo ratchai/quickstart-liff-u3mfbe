@@ -210,9 +210,9 @@ function getLocationTxtFromLocation(lat,lng)
   service.nearbySearch(request, callback_pushdatatoDB);
 }
 function callback_pushdatatoDB(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    let max_rating=0, max_user_rating=0;
-    let max_rating_location, max_user_rating_location;
+  let max_rating=0, max_user_rating=0;
+  let max_rating_location, max_user_rating_location;
+  if (status == google.maps.places.PlacesServiceStatus.OK) {   
     for (var i = 0; i < results.length; i++) {
       if(results[i].max_user_rating> max_user_rating)
       {

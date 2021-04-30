@@ -232,6 +232,7 @@ async function main() {
   await liff.login();
    profile =  await liff.getProfile();
   greetingText.innerHTML = "สวัสดีคุณ" + profile.displayName;
+  console.log(profile.pictureUrl);
   initMap(profile.pictureUrl);
 }
 main();

@@ -30,6 +30,7 @@ const greetingText = document.getElementById("greeting");
 var profile;
 var userlocation;
 var dateString;
+var dateString_yyyymmdd;
 async function getUserProfile() {
   //pictureUrl.src = profile.pictureUrl;
   greetingText.innerHTML = "สวัสดีคุณ" + profile.displayName;
@@ -180,7 +181,7 @@ firebase.initializeApp(firebaseConfig);
 const dbRef = firebase.database().ref();
 function checkIn() {
   let now = new Date();
-  let dateString = moment(now).format('YYYY-MM-DD');
+  dateString_yyyymmdd = moment(now).format('YYYY-MM-DD');
   dbRef.child("UserTable").child(profile.userId).get().then((snapshot) => {
     if (snapshot.exists()) {
       console.log("update user");
@@ -244,7 +245,7 @@ function callback_pushdatatoDB(results, status) {
     
   }
   let locationtxt = (max_rating_location==max_rating_location)?max_rating_location:max_user_rating_location+","+max_rating_location
-  firebase.database().ref('CheckInTable/' + profile.userId+'/'+dateString).push({
+  firebase.database().ref('CheckInTable/' + profile.userId+'/'+dateString_yyyymmdd).push({
     "utcCreatedUnix": firebase.database.ServerValue.TIMESTAMP, 
     "userid":profile.userId, 
     "displayname":profile.displayName, 

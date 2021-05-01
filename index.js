@@ -180,15 +180,22 @@ firebase.initializeApp(firebaseConfig);
 const dbRef = firebase.database().ref();
 function checkIn() {
   let now = new Date();
-  var dateString = moment(now).format('YYYY-MM-DD');
+  dateString = moment(now).format('YYYY-MM-DD');
   dbRef.child("UserTable").child(profile.userId).get().then((snapshot) => {
     if (snapshot.exists()) {
-      console.log(snapshot.val());
-    } else {
-      console.log("No data available");
+      console.log("update user");
       dbRef.child('UserTable').set( profile.userId);
       dbRef.child('UserTable/'+profile.userId).set( {
-        picURL:"www.abc.com"        
+        displayName: profile.displayName,
+        picURL: profile.pictureUrl
+      });
+      
+    } else {
+      console.log("No user");
+      dbRef.child('UserTable').set( profile.userId);
+      dbRef.child('UserTable/'+profile.userId).set( {
+        displayName: profile.displayName,
+        picURL: profile.pictureUrl    
       });
     }
   }).catch((error) => {
@@ -265,6 +272,7 @@ function endCheckin(locationtxt)
       stickerId: 1989
     }
   ]);
+  liff.closeWindow();
 }
 
 async function main() {

@@ -38,7 +38,7 @@ async function getUserProfile() {
 function refreshTime() {
   //test//
   var options = { dateStyle: "long", timeStyle: "medium" };
-  let dateString = new Date().toLocaleString("th-TH", options);
+  dateString = new Date().toLocaleString("th-TH", options);
   var formattedTimeString = dateString.substring(dateString.length - 8);
   dateString = dateString.substring(0, dateString.length - 8);
   formattedTimeString = formattedTimeString.replace(/:/g, " : ");
@@ -180,7 +180,7 @@ firebase.initializeApp(firebaseConfig);
 const dbRef = firebase.database().ref();
 function checkIn() {
   let now = new Date();
-  dateString = moment(now).format('YYYY-MM-DD');
+  let dateString = moment(now).format('YYYY-MM-DD');
   dbRef.child("UserTable").child(profile.userId).get().then((snapshot) => {
     if (snapshot.exists()) {
       console.log("update user");

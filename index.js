@@ -38,9 +38,9 @@ async function getUserProfile() {
 function refreshTime() {
   //test//
   var options = { dateStyle: "long", timeStyle: "medium" };
-  dateString = new Date().toLocaleString("th-TH", options);
+  let dateString = new Date().toLocaleString("th-TH", options);
   var formattedTimeString = dateString.substring(dateString.length - 8);
-  dateString = dateString.substring(0, dateString.length - 8);
+  let dateString = dateString.substring(0, dateString.length - 8);
   formattedTimeString = formattedTimeString.replace(/:/g, " : ");
   timeDisplay.innerHTML = formattedTimeString;
   dateDisplay.innerHTML =  dateString.substring(0, dateString.length - 8);;

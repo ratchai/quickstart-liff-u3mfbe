@@ -180,6 +180,7 @@ firebase.initializeApp(firebaseConfig);
 // });
 const dbRef = firebase.database().ref();
 function checkIn() {
+  let now = new Date();
   dateString_yyyymmdd = moment(now).format('YYYY-MM-DD');
   dbRef.child("UserTable").child(profile.userId).get().then((snapshot) => {
     if (snapshot.exists()) {
